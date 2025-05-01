@@ -7,9 +7,11 @@ import Technicians from './pages/Technicians';
 import OrderStates from './pages/OrderStates';
 import HistoryReports from './pages/HistoryReports';
 import Dashboard from './components/Dashboard';
+import Login from './pages/Login';
 
 function App() {
   const [theme, setTheme] = useState('day');
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     if (theme === 'night') {
@@ -23,10 +25,22 @@ function App() {
     setTheme(theme === 'day' ? 'night' : 'day');
   };
 
+  const handleLogin = (email) => {
+    setUser(email);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+  };
+
+  if (!user) {
+    return <Login onLogin={handleLogin} />;
+  }
+
   return (
     <Router>
       <div className="min-h-screen flex bg-white dark:bg-nightblack text-limegreen transition-colors duration-500">
-        <Sidebar theme={theme} toggleTheme={toggleTheme} />
+        <Sidebar theme={theme} toggleTheme={toggleTheme} onLogout={handleLogout} />
         <div className="flex flex-col flex-grow p-4 overflow-auto">
           <Dashboard />
           <main className="flex-grow mt-4">

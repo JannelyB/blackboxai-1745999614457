@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Sidebar = ({ theme, toggleTheme }) => {
+const Sidebar = ({ theme, toggleTheme, onLogout }) => {
   const linkClass = ({ isActive }) =>
     isActive
       ? 'bg-limegreen text-white font-semibold rounded px-3 py-2 block'
@@ -29,7 +29,7 @@ const Sidebar = ({ theme, toggleTheme }) => {
           <i className="fas fa-file-alt mr-2"></i> Historial
         </NavLink>
       </nav>
-      <div className="p-4 border-t border-limegreen">
+      <div className="p-4 border-t border-limegreen space-y-2">
         <button
           onClick={toggleTheme}
           className="w-full bg-limegreen text-white rounded py-2 flex items-center justify-center hover:bg-limegreen-dark transition"
@@ -44,6 +44,13 @@ const Sidebar = ({ theme, toggleTheme }) => {
               <i className="fas fa-sun mr-2"></i> Modo Día
             </>
           )}
+        </button>
+        <button
+          onClick={onLogout}
+          className="w-full bg-red-600 hover:bg-red-700 text-white rounded py-2 flex items-center justify-center transition"
+          aria-label="Logout"
+        >
+          <i className="fas fa-sign-out-alt mr-2"></i> Cerrar Sesión
         </button>
       </div>
     </aside>

@@ -8,12 +8,15 @@ import OrderStates from './pages/OrderStates';
 import HistoryReports from './pages/HistoryReports';
 import Dashboard from './components/Dashboard';
 import Login from './pages/Login';
+import ClientsRegister from './pages/ClientsRegister';
+import OrdersCreate from './pages/OrdersCreate';
 
 function App() {
   const [theme, setTheme] = useState('day');
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    console.log('Theme changed to:', theme);
     if (theme === 'night') {
       document.documentElement.classList.add('dark');
     } else {
@@ -45,13 +48,15 @@ function App() {
           <Dashboard />
           <main className="flex-grow mt-4">
             <Routes>
-              <Route path="/" element={<Navigate to="/clients" replace />} />
-              <Route path="/clients" element={<Clients />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/technicians" element={<Technicians />} />
-              <Route path="/order-states" element={<OrderStates />} />
-              <Route path="/history-reports" element={<HistoryReports />} />
-            </Routes>
+            <Route path="/" element={<Navigate to="/clients" replace />} />
+            <Route path="/clients" element={<Clients />} />
+            <Route path="/clients-register" element={<ClientsRegister />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/orders-create" element={<OrdersCreate />} />
+            <Route path="/technicians" element={<Technicians />} />
+            <Route path="/order-states" element={<OrderStates />} />
+            <Route path="/history-reports" element={<HistoryReports />} />
+          </Routes>
           </main>
         </div>
       </div>

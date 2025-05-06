@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for day and night mode */
+body {
+  @apply font-sans;
+}
+
+body.day {
+  @apply bg-white text-limegreen-dark;
+}
+
+body.night {
+  @apply bg-nightblack text-limegreen-light;
+}
